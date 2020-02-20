@@ -31,12 +31,7 @@ public class Task2 {
      */
     boolean testIfIntsEqual(Integer a, Integer b)
     {
-        if(a == b)
-        {
-            return true;
-        }
-        else
-            return false;
+       return a.equals(b);
     }
 
     /**
@@ -50,6 +45,9 @@ public class Task2 {
      */
     boolean numberInRange(Integer number, Integer leftBound, Integer rightBound, Boolean inclusively)
     {
+        if (number == null || leftBound == null || rightBound == null || inclusively == null) {
+            return false;
+        }
        if((inclusively == true) &&(number >= leftBound) && (number <= rightBound))
        {
            return true;
@@ -86,13 +84,7 @@ public class Task2 {
      */
     boolean areRealNumbersEqual(double a, double b)
     {
-     if(a == b)
-     {
-         return true;
-
-     }
-     else
-         return false;
+        return 1e-5 > Math.abs(a - b);
     }
 
     /**
@@ -136,9 +128,9 @@ public class Task2 {
     int schoolDesks(int num1, int num2, int num3)
     {
         int res = 0;
-        if(num1%2 == 0)  {res = num1/2; } else res = num1/2 + 1;
-        if(num2%2 == 0)  {res = num2/2; } else res = num2/2 + 1;
-        if(num3%2 == 0)  {res = num3/2; } else res = num3/2 + 1;
+        if(num1 % 2 == 0)  { res = num1/2; } else res = num1/2 + 1;
+        if(num2 % 2 == 0)  { res += num2/2; } else res += num2/2 + 1;
+        if(num3 % 2 == 0)  { res += num3/2; } else res += num3/2 + 1;
         return res;
     }
 
@@ -148,16 +140,11 @@ public class Task2 {
     int xorDigits(int N)
     {
         int res = 0;
-        while(N > 0)
-        {
-            if(N > 10)
-            {
-                int a = N % 10;
-                res += a;
-            }
-            N /= 10;
-        }
-        return (res/10)^(res - res/10);
+
+        int a = N%10;
+        N = N/10;
+        int b = N%10;
+        return a^b;
     }
 
 }
